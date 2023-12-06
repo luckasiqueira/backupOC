@@ -19,7 +19,7 @@ func SetFolder() string {
 	t := time.Now()
 
 	// Set and create our backup directory
-	bkpPath := "backup-" + t.Format("2006.01.02")
+	bkpPath := "backup-" + t.Format("2006.01.02-15-04")
 
 	err := os.Mkdir(bkpPath, 755)
 	if err != nil {

@@ -1,3 +1,9 @@
-package backupOC
+package main
 
+import "backupOC/controllers"
 
+var dir = controllers.SetFolder()
+
+func main() {
+	controllers.DbDump(dir)
+}

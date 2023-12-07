@@ -5,7 +5,7 @@ import (
 	"os/exec"
 )
 
-func DbDump(dir string, Data *Database) {
+func DbDump(dir string, data *Database) {
 	// Create new path inside backup directory
 	err := os.Mkdir(dir+"/Banco de dados", 755)
 
@@ -16,7 +16,7 @@ func DbDump(dir string, Data *Database) {
 	}
 
 	// Running MySQL dump
-	dump := exec.Command("mysqldump", "-u", "", "-p"+"", "-h", "", "")
+	dump := exec.Command("mysqldump", "-u", data.User, "-p"+data.Pass, "-h", data.Host, "-P", data.Port, data.Name)
 
 	output, err := dump.Output()
 	if err != nil {

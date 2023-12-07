@@ -1,10 +1,11 @@
 package controllers
 
 import (
-	"fmt"
 	"io/ioutil"
 	"regexp"
 )
+
+var Data = &Database{}
 
 func reader(filePath string) (map[string]string, error) {
 	content, err := ioutil.ReadFile(filePath)
@@ -35,16 +36,20 @@ func reader(filePath string) (map[string]string, error) {
 	return configInfo, nil
 }
 
-func GetData() {
+func GetData() *Database {
 	filePath := "config.php"
 
 	configInfo, err := reader(filePath)
 	if err != nil {
 		panic(err.Error())
-		return
 	}
 
-	for key, value := range configInfo {
-		fmt.Printf("%s: %s\n", key, value)
-	}
+	Data.Name = configInfo["DB_DATABASE"]
+	Data.Pass = configInfo["DB_PASSWORD"]
+	Data.User = configInfo["DB_PASSWORD"]
+	Data.Host = configInfo["DB_HOSTNAME"]
+	Data.Port = configInfo["DB_PORT"]
+	Data.Storage = configInfo["DIR_STORAGE"]
+
+	return Data
 }

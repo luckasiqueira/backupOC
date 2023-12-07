@@ -5,7 +5,7 @@ import (
 	"os/exec"
 )
 
-func DbDump(dir string) {
+func DbDump(dir string, Data *Database) {
 	// Create new path inside backup directory
 	err := os.Mkdir(dir+"/Banco de dados", 755)
 

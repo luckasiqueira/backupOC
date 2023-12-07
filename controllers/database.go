@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"fmt"
 	"os"
 	"os/exec"
 )
@@ -17,7 +16,7 @@ func DbDump(dir string) {
 	}
 
 	// Running MySQL dump
-	dump := exec.Command("mysqldump", "-u", "root", "-p"+"", "-h", "", "")
+	dump := exec.Command("mysqldump", "-u", "", "-p"+"", "-h", "", "")
 
 	output, err := dump.Output()
 	if err != nil {
@@ -31,7 +30,7 @@ func DbDump(dir string) {
 	// Write data onto .sql file
 	_, err = sqlFile.Write(output)
 	if err != nil {
-		fmt.Printf("Error when writing to .sql file: %v\n", err)
+		panic(err.Error())
 		os.Exit(1)
 	}
 

@@ -3,6 +3,8 @@
 
 *.php
 *.exe
+*.zip
+*.env
 
 **/backup-*/
 /.idea/
